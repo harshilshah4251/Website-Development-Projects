@@ -1,4 +1,4 @@
-
+<!--This interface is based on the specific requirement of the department for which I first made this interface-->
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
@@ -108,16 +108,6 @@
             <value for="i1">Cover</value>
             <input type="radio" id ="i2" class="form-radio-element" name="iradio" value="right" />
             <value for="i2">Right</value><br/>
-
-
-            <input type="radio" id ="t1" class="form-radio-element radio-inline" name="tradio" value="0"/>
-            <label style="font-size:15px;" for="t1">Optimal Resume</label>
-            <input type="radio" id ="t2" class="form-radio-element radio-inline" name="tradio" value="1" />
-            <label style="font-size:15px;" for="t2">Simply Hired</label>
-            <input type="radio" id ="t3" class="form-radio-element radio-inline" name="tradio" value="2" />
-            <label style="font-size:15px;" for="t3">Glassdoor</label>
-            <input type="radio" id ="t4" class="form-radio-element radio-inline" name="tradio" value="3" />
-            <label style="font-size:15px;" for="t4">Going Global</label>
 
 
             <input type="submit" class="btn btn-success center-block add-event-button"  name="submit" value="Submit" onsubmit="window.location.reload()"/>
