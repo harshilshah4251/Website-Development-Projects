@@ -4,102 +4,125 @@
 
 if(isset($_POST['submit'])){
 
-  if(isset($_POST['cradio'])){
 
-      if($_POST['cradio']=="Center for Career Discovery and Development"){
-        $filepath="careerdev.txt";
-        $file=fopen($filepath,"a+");
-        $contents= file_get_contents($filepath);
-        if(!empty($contents)){
-          $stringbuild=$contents."\\m\n";
-        }
-        $stringbuild.=$_POST['eventtitle']."\\o\n";
-        $stringbuild.=$_POST['eventdate']."\\o\n";
-        $stringbuild.=$_POST['eventlocation']."\\o\n";
-        $stringbuild.=$_POST['eventlink']."\\o\n";
-        $stringbuild.=$_POST['eventdescription']."\\o\n";
-        $stringbuild.=$_POST['imagepath']."\\o\n";
-        $stringbuild.=$_POST['iradio'];
-        file_put_contents($filepath, $stringbuild);
-        echo "event added successfully";
-      }
-      else if($_POST['cradio']=="Graduate Opportunities"){
-        $filepath="graduateops.txt";
-        $file=fopen($filepath,"a+");
-        $contents= file_get_contents($filepath);
-        if(!empty($contents)){
-          $stringbuild=$contents."\\m\n";
-        }
-        $stringbuild.=$_POST['eventtitle']."\\o\n";
-        $stringbuild.=$_POST['eventdate']."\\o\n";
-        $stringbuild.=$_POST['eventlocation']."\\o\n";
-        $stringbuild.=$_POST['eventlink']."\\o\n";
-        $stringbuild.=$_POST['eventdescription']."\\o\n";
-        $stringbuild.=$_POST['imagepath']."\\o\n";
-        $stringbuild.=$_POST['iradio'];
-        file_put_contents($filepath, $stringbuild);
-        echo "event added successfully";
-      }
-      else if($_POST['cradio']=="Internship and Job Opportunities"){
-        $filepath="internships.txt";
-        $file=fopen($filepath,"a+");
-        $contents= file_get_contents($filepath);
-        if(!empty($contents)){
-          $stringbuild=$contents."\\m\n";
-        }
-        $stringbuild.=$_POST['eventtitle']."\\o\n";
-        $stringbuild.=$_POST['eventdate']."\\o\n";
-        $stringbuild.=$_POST['eventlocation']."\\o\n";
-        $stringbuild.=$_POST['eventlink']."\\o\n";
-        $stringbuild.=$_POST['eventdescription']."\\o\n";
-        $stringbuild.=$_POST['imagepath']."\\o\n";
-        $stringbuild.=$_POST['iradio'];
-        file_put_contents($filepath, $stringbuild);
-        echo "event added successfully";
-      }
-      else if($_POST['cradio']=="Unsolicited Career Advice"){
-        $filepath="article.txt";
-        $file=fopen($filepath,"a+");
-        $contents= file_get_contents($filepath);
-        if(!empty($contents)){
-          $stringbuild=$contents."\\m\n";
-        }
-        $stringbuild.=$_POST['eventtitle']."\\o\n";
-        $stringbuild.=$_POST['eventdate']."\\o\n";
-        $stringbuild.=$_POST['eventlocation']."\\o\n";
-        $stringbuild.=$_POST['eventlink']."\\o\n";
-        $stringbuild.=$_POST['eventdescription']."\\o\n";
-        $stringbuild.=$_POST['imagepath']."\\o\n";
-        $stringbuild.=$_POST['iradio'];
-        file_put_contents($filepath, $stringbuild);
-        echo "event added successfully";
-      }
+  if(isset($_POST['directoryname']) && $_POST['directoryname']!=""){
+    if(!is_dir('../'.$_POST['directoryname'])){
+      mkdir('../'.$_POST['directoryname']);
+      // $contents=file_get_contents('createwebpage.php');
+      // $filepath=$directoryname."/createwebpage.php";
+      // $file=fopen($filepath,"a+");
+      // file_put_contents($filepath, $contents);
+      // echo "success";
+    }               //creates a new directory if not already present
+
+    file_put_contents('currentroundupdirectory.txt', $_POST['directoryname']);
   }
-  if(isset($_POST['tradio'])){
-    fopen('./careerresources.txt', "a+");
-    $careerresources = file_get_contents('./careerresources.txt', true);
-    $careerresourceslist=explode("\m", $careerresources);
-    $property=explode("\o",$careerresourceslist[$_POST['tradio']]);
-    $merged=array(
-      "title"=>$property[0],"date"=>$property[1],"location"=>$property[2],"link"=>$property[3],"description"=>$property[4], "imagepath"=>$property[5], "imagealignment"=>$property[6]);
-        $filepath='careertool.txt';
+
+  $directoryname=trim(file_get_contents('currentroundupdirectory.txt'));
+  // $directoryname="careerroundup_test";
+
+  if(isset($_POST['section'])){
+
+      if($_POST['section']=="center for career discovery and development"){
+        $filepath='../'.$directoryname."/careerdev.txt";
         $file=fopen($filepath,"a+");
         $contents= file_get_contents($filepath);
         if(!empty($contents)){
           $stringbuild=$contents."\\m\n";
         }
-        $stringbuild.=$merged['title']."\\o\n";
-        $stringbuild.=$merged['date']."\\o\n";
-        $stringbuild.=$merged['location']."\\o\n";
-        $stringbuild.=$merged['link']."\\o\n";
-        $stringbuild.=$merged['description']."\\o\n";
-        $stringbuild.=$merged['imagepath']."\\o\n";
-        $stringbuild.=$merged['imagealignment'];
+        $stringbuild.=$_POST['eventtitle']."\\o\n";
+        $stringbuild.=$_POST['eventdate']."\\o\n";
+        $stringbuild.=$_POST['eventlocation']."\\o\n";
+        $stringbuild.=$_POST['eventlink']."\\o\n";
+        $stringbuild.=$_POST['eventdescription']."\\o\n";
+        $stringbuild.=$_POST['imagepath']."\\o\n";
+        $stringbuild.=$_POST['iradio'];
         file_put_contents($filepath, $stringbuild);
+        echo "event added successfully";
+      }
+      else if($_POST['section']=="graduate opportunities"){
+        $filepath='../'.$directoryname."/graduateops.txt";
+        $file=fopen($filepath,"a+");
+        $contents= file_get_contents($filepath);
+        if(!empty($contents)){
+          $stringbuild=$contents."\\m\n";
+        }
+        $stringbuild.=$_POST['eventtitle']."\\o\n";
+        $stringbuild.=$_POST['eventdate']."\\o\n";
+        $stringbuild.=$_POST['eventlocation']."\\o\n";
+        $stringbuild.=$_POST['eventlink']."\\o\n";
+        $stringbuild.=$_POST['eventdescription']."\\o\n";
+        $stringbuild.=$_POST['imagepath']."\\o\n";
+        $stringbuild.=$_POST['iradio'];
+        file_put_contents($filepath, $stringbuild);
+        echo "event added successfully";
+      }
+      else if($_POST['section']=="internship and job opportunities"){
+        $filepath='../'.$directoryname."/internships.txt";
+        $file=fopen($filepath,"a+");
+        $contents= file_get_contents($filepath);
+        if(!empty($contents)){
+          $stringbuild=$contents."\\m\n";
+        }
+        $stringbuild.=$_POST['eventtitle']."\\o\n";
+        $stringbuild.=$_POST['eventdate']."\\o\n";
+        $stringbuild.=$_POST['eventlocation']."\\o\n";
+        $stringbuild.=$_POST['eventlink']."\\o\n";
+        $stringbuild.=$_POST['eventdescription']."\\o\n";
+        $stringbuild.=$_POST['imagepath']."\\o\n";
+        $stringbuild.=$_POST['iradio'];
+        file_put_contents($filepath, $stringbuild);
+        echo "event added successfully";
+      }
+      else if($_POST['section']=="unsolicited career advice"){
+        $filepath='../'.$directoryname."/article.txt";
+        $file=fopen($filepath,"a+");
+        $contents= file_get_contents($filepath);
+        if(!empty($contents)){
+          $stringbuild=$contents."\\m\n";
+        }
+        $stringbuild.=$_POST['eventtitle']."\\o\n";
+        $stringbuild.=$_POST['eventdate']."\\o\n";
+        $stringbuild.=$_POST['eventlocation']."\\o\n";
+        $stringbuild.=$_POST['eventlink']."\\o\n";
+        $stringbuild.=$_POST['eventdescription']."\\o\n";
+        $stringbuild.=$_POST['imagepath']."\\o\n";
+        $stringbuild.=$_POST['iradio'];
+        file_put_contents($filepath, $stringbuild);
+        echo "event added successfully";
+      }
 
+      else if(isset($_POST['section'])=="career resource tools spotlight"){
+
+    $filepath='../'.$directoryname."/careertool.txt";
+    $file=fopen($filepath,"a+");
+    $contents= file_get_contents($filepath);
+    if(!empty($contents)){
+      $stringbuild=$contents."\\m\n";
     }
+    $stringbuild.=$_POST['eventtitle']."\\o\n";
+    $stringbuild.=$_POST['eventdate']."\\o\n";
+    $stringbuild.=$_POST['eventlocation']."\\o\n";
+    $stringbuild.=$_POST['eventlink']."\\o\n";
+    $stringbuild.=$_POST['eventdescription']."\\o\n";
+    $stringbuild.=$_POST['imagepath']."\\o\n";
+    $stringbuild.=$_POST['iradio'];
 
-  $url='http://enrollment.iac.gatech.edu/emails/careerroundup/10-26-2017/interface.php';
+
+    file_put_contents($filepath, $stringbuild);
+    echo "event added successfully";
+
+  }}
+
+
+
+
+
+
+
+
+
+  $url='http://enrollment.iac.gatech.edu/emails/careerroundup/util/interface.php';
   echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">';
 }
 

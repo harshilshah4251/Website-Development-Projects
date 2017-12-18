@@ -84,7 +84,7 @@ foreach ($careerdevlist as $element) {
 
     }
     elseif(trim($merged['imagealignment'])=='right'){
-      echo '<img src='.$merged['imagepath'].' align ="right" vspace="10px">';
+      echo '<img src='.$merged['imagepath'].' align ="right" vspace="10px" valign="middle" >';
       //echo "yes";
     }
 
@@ -251,11 +251,11 @@ $i=0;
       } else {
         echo '<td align="left" valign="top" class="" style="border-collapse:collapse;border-bottom: 3px solid rgb(238,178,17);">';
       }
-      if(trim($merged['imagealignment'])=="cover"){
+      if(trim($merged['imagealignment'])=="cover" && $merged['imagepath']!=""){
         echo '<img src='.$merged['imagepath'].' vspace="10px">';
       }
-      elseif(trim($merged['imagealignment'])=="right"){
-        echo '<img src='.$merged['imagepath'].' align ="right" vspace="10px">';
+      else if(trim($merged['imagealignment'])=="right" && $merged['imagepath']!=""){
+        echo '<img src='.$merged['imagepath'].' align ="right" vspace="10px" valign="middle">';
 
       }
       echo
@@ -351,7 +351,7 @@ $i=0;
       if($merged['imagealignment']=="cover"){
         echo '<img src='.$merged['imagepath'].' vspace="10px">';
       }
-      else{
+      else {
         echo '<img src='.$merged['imagepath'].' align ="right" vspace="10px">';
       }
       echo
